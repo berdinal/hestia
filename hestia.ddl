@@ -17,20 +17,20 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Name: hestia; Type: SCHEMA; Schema: -; Owner: postgres
+-- Name: hestia; Type: SCHEMA; Schema: -; Owner: hestia
 --
 
 CREATE SCHEMA hestia;
 
 
-ALTER SCHEMA hestia OWNER TO postgres;
+ALTER SCHEMA hestia OWNER TO hestia;
 
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
 --
--- Name: homes; Type: TABLE; Schema: hestia; Owner: postgres
+-- Name: homes; Type: TABLE; Schema: hestia; Owner: hestia
 --
 
 CREATE TABLE hestia.homes (
@@ -43,10 +43,10 @@ CREATE TABLE hestia.homes (
 );
 
 
-ALTER TABLE hestia.homes OWNER TO postgres;
+ALTER TABLE hestia.homes OWNER TO hestia;
 
 --
--- Name: meta; Type: TABLE; Schema: hestia; Owner: postgres
+-- Name: meta; Type: TABLE; Schema: hestia; Owner: hestia
 --
 
 CREATE TABLE hestia.meta (
@@ -59,10 +59,10 @@ CREATE TABLE hestia.meta (
 );
 
 
-ALTER TABLE hestia.meta OWNER TO postgres;
+ALTER TABLE hestia.meta OWNER TO hestia;
 
 --
--- Name: subscribers; Type: TABLE; Schema: hestia; Owner: postgres
+-- Name: subscribers; Type: TABLE; Schema: hestia; Owner: hestia
 --
 
 CREATE TABLE hestia.subscribers (
@@ -79,10 +79,10 @@ CREATE TABLE hestia.subscribers (
 );
 
 
-ALTER TABLE hestia.subscribers OWNER TO postgres;
+ALTER TABLE hestia.subscribers OWNER TO hestia;
 
 --
--- Name: subscribers_id_seq; Type: SEQUENCE; Schema: hestia; Owner: postgres
+-- Name: subscribers_id_seq; Type: SEQUENCE; Schema: hestia; Owner: hestia
 --
 
 ALTER TABLE hestia.subscribers ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
@@ -95,8 +95,11 @@ ALTER TABLE hestia.subscribers ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY 
 );
 
 
+ALTER SEQUENCE hestia.subscribers_id_seq OWNER TO hestia;
+
+
 --
--- Name: targets; Type: TABLE; Schema: hestia; Owner: postgres
+-- Name: targets; Type: TABLE; Schema: hestia; Owner: hestia
 --
 
 CREATE TABLE hestia.targets (
@@ -111,10 +114,10 @@ CREATE TABLE hestia.targets (
 );
 
 
-ALTER TABLE hestia.targets OWNER TO postgres;
+ALTER TABLE hestia.targets OWNER TO hestia;
 
 --
--- Name: targets_id_seq; Type: SEQUENCE; Schema: hestia; Owner: postgres
+-- Name: targets_id_seq; Type: SEQUENCE; Schema: hestia; Owner: hestia
 --
 
 ALTER TABLE hestia.targets ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
@@ -127,36 +130,39 @@ ALTER TABLE hestia.targets ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 );
 
 
+ALTER SEQUENCE hestia.targets_id_seq OWNER TO hestia;
+
+
 --
--- Name: SCHEMA hestia; Type: ACL; Schema: -; Owner: postgres
+-- Name: SCHEMA hestia; Type: ACL; Schema: -; Owner: hestia
 --
 
 GRANT USAGE ON SCHEMA hestia TO hestia;
 
 
 --
--- Name: TABLE homes; Type: ACL; Schema: hestia; Owner: postgres
+-- Name: TABLE homes; Type: ACL; Schema: hestia; Owner: hestia
 --
 
 GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE hestia.homes TO hestia;
 
 
 --
--- Name: TABLE meta; Type: ACL; Schema: hestia; Owner: postgres
+-- Name: TABLE meta; Type: ACL; Schema: hestia; Owner: hestia
 --
 
 GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE hestia.meta TO hestia;
 
 
 --
--- Name: TABLE subscribers; Type: ACL; Schema: hestia; Owner: postgres
+-- Name: TABLE subscribers; Type: ACL; Schema: hestia; Owner: hestia
 --
 
 GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE hestia.subscribers TO hestia;
 
 
 --
--- Name: TABLE targets; Type: ACL; Schema: hestia; Owner: postgres
+-- Name: TABLE targets; Type: ACL; Schema: hestia; Owner: hestia
 --
 
 GRANT SELECT ON TABLE hestia.targets TO hestia;

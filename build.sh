@@ -11,6 +11,7 @@ fi
 
 docker build --build-arg=APP_VERSION="$APP_VERSION" --tag wtfloris/hestia-bot:$TAG -f Dockerfile.bot .
 docker build --build-arg=APP_VERSION="$APP_VERSION" --tag wtfloris/hestia-scraper:$TAG -f Dockerfile.scraper .
+docker build --tag wtfloris/hestia-database:$TAG -f Dockerfile.postgres .
 
 if [[ $1 == -y ]] || [[ $2 == -y ]]; then
         docker compose $DEVARGS up -d
