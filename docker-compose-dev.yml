@@ -35,11 +35,18 @@ services:
 
   hestia-database-dev:
     container_name: hestia-database-dev
-    image: postgres:latest
-    networks: 
+    build:
+      context: .
+      dockerfile: Dockerfile.postgres
+    image: wtfloris/hestia-database:dev
+    networks:
       - hestia-network-dev
     ports:
       - "127.0.0.1:54321:5432"
-    restart: unless-stopped 
+    restart: unless-stopped
     volumes:
       - hestia-database-volume-dev:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: hestia
+      POSTGRES_USER: hestia
+      POSTGRES_PASSWORD: ${HestiaPostgresPassword:-changeme}

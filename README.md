@@ -2,6 +2,10 @@
 
 Hestia scrapes real estate websites for new rental listings, and broadcasts the results via Telegram. Check out @hestia_homes_bot on Telegram: https://t.me/hestia_homes_bot
 
+### Database setup
+
+The Postgres container is built from `Dockerfile.postgres`, which copies `hestia.ddl` into `/docker-entrypoint-initdb.d/` so the schema is created automatically the first time the database starts. The dump now assigns ownership of the schema and tables to the `hestia` role, matching the `POSTGRES_USER` provided by the compose files. Configure the password for that role by exporting `HestiaPostgresPassword` before running `docker compose`; it defaults to `changeme`, so make sure `secrets.py` uses the same value or override it in your environment.
+
 ### How to contribute
 
 First of all, thanks! If you want to add a website, you need to write a parser. This takes a bit of detective work to find out how the website can be processed best.
